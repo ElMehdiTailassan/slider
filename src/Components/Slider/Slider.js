@@ -14,11 +14,21 @@ export default function Slider() {
     })
 
     const nextSlide = () => {
-        console.log("NEXT");
+       if(slideAnim.index != dataSlider.length){
+        setSlideAnim({index: slideAnim.index +1, inPregress: true})
+       }
+       else if(slideAnim.index === dataSlider.length){
+        setSlideAnim({index: 1, inPregress: true})
+       }
     }
 
     const prevSlide = () => {
-        console.log("PREV");
+        if(slideAnim.index !== 1){
+            setSlideAnim({index: slideAnim.index -1, inPregress: true})
+           }
+           else if(slideAnim.index === 1){
+            setSlideAnim({index: 5, inPregress: true})
+           }
     }
 
 
