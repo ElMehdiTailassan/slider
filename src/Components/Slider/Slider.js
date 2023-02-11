@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import dataSlider from './dataSlider'
 import './Slider.css'
+import BtnSlider from './BtnSlider'
 
 
 //dataSlider c'est le tableau qui nous permettra d'iterer a l'interieur pour afficher les différentes images
@@ -12,6 +13,13 @@ export default function Slider() {
         inPregress: false
     })
 
+    const nextSlide = () => {
+        console.log("NEXT");
+    }
+
+    const prevSlide = () => {
+        console.log("PREV");
+    }
 
 
   return (
@@ -27,6 +35,8 @@ export default function Slider() {
                 </div>
             )
         })}
+        <BtnSlider moveSlide={nextSlide} direction={"next"} />
+        <BtnSlider moveSlide={prevSlide} direction={"prev"} />
     </div>
   )
 }
