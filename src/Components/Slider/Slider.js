@@ -14,20 +14,42 @@ export default function Slider() {
     })
 
     const nextSlide = () => {
-       if(slideAnim.index != dataSlider.length){
-        setSlideAnim({index: slideAnim.index +1, inPregress: true})
+       if(slideAnim.index != dataSlider.length && !slideAnim.inPregress){
+
+        setSlideAnim({index: slideAnim.index + 1, inPregress: true})
+
+
+        setTimeout(()=> {
+            setSlideAnim({index:slideAnim.index +1 ,
+            inPregress: false})
+        }, 400)
+
        }
-       else if(slideAnim.index === dataSlider.length){
+       else if(slideAnim.index === dataSlider.length && !slideAnim.inPregress){
+
         setSlideAnim({index: 1, inPregress: true})
+
+        setTimeout(()=> {
+            setSlideAnim({index: 1 ,
+            inPregress: false})
+        }, 400)
        }
     }
 
     const prevSlide = () => {
-        if(slideAnim.index !== 1){
+        if(slideAnim.index !== 1 && !slideAnim.inPregress){
             setSlideAnim({index: slideAnim.index -1, inPregress: true})
+            setTimeout(()=> {
+                setSlideAnim({index: slideAnim.index -1 ,
+                inPregress: false})
+            }, 400)
            }
-           else if(slideAnim.index === 1){
+           else if(slideAnim.index === 1 && !slideAnim.inPregress){
             setSlideAnim({index: 5, inPregress: true})
+            setTimeout(()=> {
+                setSlideAnim({index: 5 ,
+                inPregress: false})
+            }, 400)
            }
     }
 
