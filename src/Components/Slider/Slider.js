@@ -14,7 +14,7 @@ export default function Slider() {
     })
 
     const nextSlide = () => {
-       if(slideAnim.index != dataSlider.length && !slideAnim.inPregress){
+       if(slideAnim.index !== dataSlider.length && !slideAnim.inPregress){
 
         setSlideAnim({index: slideAnim.index + 1, inPregress: true})
 
@@ -53,6 +53,10 @@ export default function Slider() {
            }
     }
 
+    const movDot = index => {
+        setSlideAnim({index: index, inPregress: false})
+    }
+
 
   return (
     <div className="container-slider">
@@ -63,12 +67,22 @@ export default function Slider() {
                 className={slideAnim.index === index +1 ?
                 "slide active-anim" : "slide"}
                 >
-                    <img src={`/Imgs/img${index +1}.jpg`} alt="" />
+                    <img src={process.env.PUBLIC_URL + `/Imgs/img${index +1}.jpg`} alt="" />
                 </div>
             )
         })}
         <BtnSlider moveSlide={nextSlide} direction={"next"} />
         <BtnSlider moveSlide={prevSlide} direction={"prev"} />
+
+        
+        <div className="container-dots">
+          {Array.from({length: 5}).map((item, index) => {
+            return <div className={slideAnim.index === index + 1 ? "dot active" : "dot"}
+            onClick={() => movDot(index + 1)}
+            ></div>
+          })}
+        </div>
+
     </div>
   )
 }
